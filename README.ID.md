@@ -1,6 +1,6 @@
 # CLI-Craft
 
-## Ini adalah versi bahasa Inggris dari readme Untuk versi bahasa Indonesia, Anda dapat memeriksa [Readme_EN](README.en.md).
+## Ini adalah versi bahasa Inggris dari readme Untuk versi bahasa Indonesia, Anda dapat memeriksa [Readme_EN](README.En.md).
 
 Antarmuka Baris Perintah bertema Minecraft yang dibuat dengan Python yang memungkinkan Anda menavigasi dan memanipulasi sistem file menggunakan perintah gaya Minecraft.
 ```
