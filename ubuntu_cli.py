@@ -21,7 +21,7 @@ def show_help():
     print("tree     - Menampilkan struktur direktori dalam bentuk pohon")
     print("find_large <size> - Menampilkan file yang lebih besar dari ukuran tertentu")
     print("log <command> - Menyimpan riwayat penggunaan command ke file log")
-    print("joke     - Menampilkan lelucon acak untuk hiburan")
+    print("joke     - Menampilkan lelucon Krinj banget ya Tuhan")
 
 # Fungsi untuk membersihkan layar
 def clear_screen():
@@ -62,9 +62,9 @@ def log_command(command):
 # Fungsi untuk menampilkan lelucon acak
 def joke():
     jokes = [
-        "Kenapa programmer suka kopi? Karena tanpa kopi, mereka akan 'java' tidur.",
-        "Apa makanan favorit developer? Spaghetti code!",
-        "Kenapa komputer tidak pernah lapar? Karena sudah punya banyak 'byte'."
+        "Apa surat yang susah untuk dipalsukan? Suratan takdir.",
+        "Sayur apa yang suka nyanyi? Kolplay",
+        "Kenapa saat ayam berkokok matanya merem? Karena teks nya sudah di hapal."
     ]
     print(random.choice(jokes))
 
