@@ -1,3 +1,6 @@
 help
 ls
 exit
+help
+tree
+exit

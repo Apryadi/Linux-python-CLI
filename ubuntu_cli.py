@@ -2,39 +2,85 @@ import os
 import sys
 import shutil
 import random
+import time
 
-# Fungsi untuk menampilkan bantuan
+
+def show_ascii_art():
+    ascii_art = """
+⢀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⣀⣀⣀⡀
+⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+⠘⠛⠛⠛⠛⠛⠛⠛⠛⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⠛⠛⠛⠛⠛⠛⠛
+            ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢠⣤⣤⣤⣤⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣤⣤⣤⣤⡄⠀⠀⠀⠀
+⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀
+⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀
+⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀
+⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀
+⠀⠀⠀⠀⢸⣿⣿⣿⣿⡏⠉⠉⠉⠉⠉⠉⠉⠉⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀
+⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀ ⣿⣿⣿⣿⣿⡇⠀⠀
+⠀⠀⠀⠀⠈⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀ ⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀
+    """
+    
+    title_art = """
+     ██████╗██╗     ██╗      ██████╗██████╗  █████╗ ███████╗████████╗
+    ██╔════╝██║     ██║     ██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝
+    ██║     ██║     ██║     ██║     ██████╔╝███████║█████╗     ██║   
+    ██║     ██║     ██║     ██║     ██╔══██╗██╔══██║██╔══╝     ██║   
+    ╚██████╗███████╗██║     ╚██████╗██║  ██║██║  ██║██║        ██║   
+     ╚═════╝╚══════╝╚═╝      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   
+    """
+    print(ascii_art)
+    print(title_art)
+
 def show_help():
-    print("\nDaftar Perintah CLI Linux yang Didukung:")
-    print("ls       - Menampilkan daftar file dan folder di direktori saat ini")
-    print("pwd      - Menampilkan direktori kerja saat ini")
-    print("cd <dir> - Mengubah direktori kerja")
-    print("mkdir <dir> - Membuat direktori baru")
-    print("rmdir <dir> - Menghapus direktori (jika kosong)")
-    print("touch <file> - Membuat file kosong baru")
-    print("rm <file> - Menghapus file")
-    print("cp <src> <dest> - Menyalin file dari satu lokasi ke lokasi lain")
-    print("mv <src> <dest> - Memindahkan atau mengganti nama file/direktori")
-    print("clear    - Membersihkan layar terminal")
-    print("exit     - Keluar dari CLI")
-    print("search <pattern> - Mencari file atau direktori berdasarkan nama")
-    print("tree     - Menampilkan struktur direktori dalam bentuk pohon")
-    print("find_large <size> - Menampilkan file yang lebih besar dari ukuran tertentu")
-    print("log <command> - Menyimpan riwayat penggunaan command ke file log")
-    print("joke     - Menampilkan lelucon Krinj banget ya Tuhan")
+    print("\n=== CLI-Craft Commands ===")
+    print("/dig <block>     - Mine a block (delete file)")
+    print("/place <block>   - Place a block (create file)")
+    print("/look           - Show blocks in current chunk (list files)")
+    print("/tp <location>  - Teleport to location (change directory)")
+    print("/coords        - Show current coordinates (show current path)")
+    print("/build <struct> - Create a structure (create directory)")
+    print("/destroy       - Destroy structure (remove directory)")
+    print("/clone         - Clone blocks (copy files)")
+    print("/move          - Move blocks (move files)")
+    print("/clear         - Clear chat")
+    print("/quit          - Leave the game")
+    print("/map           - Show chunk structure (tree view)")
+    print("/find <item>   - Find items in nearby chunks")
+    print("/large <size>  - Find large structures")
+    print("/achievement   - Show a random achievement")
+    print("/help          - Show this help message")
 
-# Fungsi untuk membersihkan layar
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+def achievement():
+    achievements = [
+        "Achievement Get! /First Command/",
+        "Achievement Get! /Master Builder/",
+        "Achievement Get! /Explorer/",
+        "Achievement Get! /Block Breaker/",
+        "Achievement Get! /Organization Expert/"
+    ]
+    achievement = random.choice(achievements)
+    print(f"\n{'='*len(achievement)}")
+    print(achievement)
+    print(f"{'='*len(achievement)}")
 
-# Fungsi untuk mencari file atau direktori berdasarkan nama
+def find_large(size):
+    size_bytes = int(size) * 1024 * 1024  # Convert MB to Bytes
+    for root, dirs, files in os.walk(os.getcwd()):
+        for file in files:
+            path = os.path.join(root, file)
+            if os.path.getsize(path) > size_bytes:
+                print(f"{path} ({os.path.getsize(path)} bytes)")
+
 def search(pattern):
     for root, dirs, files in os.walk(os.getcwd()):
         for name in dirs + files:
             if pattern in name:
                 print(os.path.join(root, name))
-
-# Fungsi untuk menampilkan struktur direktori dalam bentuk pohon
+                
 def tree(directory, prefix=""):
     items = os.listdir(directory)
     for i, item in enumerate(items):
@@ -44,163 +90,144 @@ def tree(directory, prefix=""):
         if os.path.isdir(path):
             extension = "    " if i == len(items) - 1 else "│   "
             tree(path, prefix + extension)
-
-# Fungsi untuk menemukan file lebih besar dari ukuran tertentu
-def find_large(size):
-    size_bytes = int(size) * 1024 * 1024  # Convert MB to Bytes
-    for root, dirs, files in os.walk(os.getcwd()):
-        for file in files:
-            path = os.path.join(root, file)
-            if os.path.getsize(path) > size_bytes:
-                print(f"{path} ({os.path.getsize(path)} bytes)")
-
-# Fungsi untuk menyimpan command ke file log
-def log_command(command):
-    with open("command_log.txt", "a") as log_file:
-        log_file.write(command + "\n")
-
-# Fungsi untuk menampilkan lelucon acak
-def joke():
-    jokes = [
-        "Apa surat yang susah untuk dipalsukan? Suratan takdir.",
-        "Sayur apa yang suka nyanyi? Kolplay",
-        "Kenapa saat ayam berkokok matanya merem? Karena teks nya sudah di hapal."
-    ]
-    print(random.choice(jokes))
-
-# Fungsi utama CLI
+            
 def main():
     while True:
         try:
-            command = input(f"{os.getcwd()} $ ").strip()
+            command = input(f"World: {os.getcwd()} /> ").strip()
             if not command:
                 continue
 
             args = command.split()
             cmd = args[0]
 
-            log_command(command)  # Log setiap perintah
+            if cmd == "/look":
+                print("\nBlocks in current chunk:")
+                print("\n".join(f"- {item}" for item in os.listdir()))
 
-            if cmd == "ls":
-                print("\n".join(os.listdir()))
+            elif cmd == "/coords":
+                print(f"Current coordinates: {os.getcwd()}")
 
-            elif cmd == "pwd":
-                print(os.getcwd())
-
-            elif cmd == "cd":
+            elif cmd == "/tp":
                 if len(args) < 2:
-                    print("Error: Direktori tidak disebutkan")
+                    print("Error: Where do you want to teleport?")
                 else:
                     try:
                         os.chdir(args[1])
+                        print(f"Teleported to {args[1]}")
                     except FileNotFoundError:
-                        print(f"Error: Direktori '{args[1]}' tidak ditemukan")
+                        print(f"Cannot teleport to '{args[1]}': Location not found")
 
-            elif cmd == "mkdir":
+            elif cmd == "/build":
                 if len(args) < 2:
-                    print("Error: Nama direktori tidak disebutkan")
+                    print("Error: What structure do you want to build?")
                 else:
                     try:
                         os.mkdir(args[1])
+                        print(f"Built structure: {args[1]}")
                     except FileExistsError:
-                        print(f"Error: Direktori '{args[1]}' sudah ada")
+                        print(f"Structure '{args[1]}' already exists")
 
-            elif cmd == "rmdir":
+            elif cmd == "/destroy":
                 if len(args) < 2:
-                    print("Error: Nama direktori tidak disebutkan")
+                    print("Error: Which structure to destroy?")
                 else:
                     try:
                         os.rmdir(args[1])
+                        print(f"Structure destroyed: {args[1]}")
                     except FileNotFoundError:
-                        print(f"Error: Direktori '{args[1]}' tidak ditemukan")
+                        print(f"Structure '{args[1]}' not found")
                     except OSError:
-                        print(f"Error: Direktori '{args[1]}' tidak kosong")
+                        print(f"Cannot destroy '{args[1]}': Structure not empty")
 
-            elif cmd == "touch":
+            elif cmd == "/place":
                 if len(args) < 2:
-                    print("Error: Nama file tidak disebutkan")
+                    print("Error: Which block to place?")
                 else:
                     try:
                         with open(args[1], 'w') as f:
                             pass
+                        print(f"Placed block: {args[1]}")
                     except Exception as e:
-                        print(f"Error: {e}")
+                        print(f"Cannot place block: {e}")
 
-            elif cmd == "rm":
+            elif cmd == "/dig":
                 if len(args) < 2:
-                    print("Error: Nama file tidak disebutkan")
+                    print("Error: Which block to dig?")
                 else:
                     try:
                         os.remove(args[1])
+                        print(f"Block mined: {args[1]}")
                     except FileNotFoundError:
-                        print(f"Error: File '{args[1]}' tidak ditemukan")
+                        print(f"Block '{args[1]}' not found")
 
-            elif cmd == "cp":
+            elif cmd == "/clone":
                 if len(args) < 3:
-                    print("Error: Sumber atau tujuan tidak disebutkan")
+                    print("Error: Specify source and destination")
                 else:
                     try:
                         shutil.copy(args[1], args[2])
+                        print(f"Cloned {args[1]} to {args[2]}")
                     except FileNotFoundError:
-                        print(f"Error: File '{args[1]}' tidak ditemukan")
+                        print(f"Block '{args[1]}' not found")
                     except Exception as e:
-                        print(f"Error: {e}")
+                        print(f"Clone failed: {e}")
 
-            elif cmd == "mv":
+            elif cmd == "/move":
                 if len(args) < 3:
-                    print("Error: Sumber atau tujuan tidak disebutkan")
+                    print("Error: Specify source and destination")
                 else:
                     try:
                         shutil.move(args[1], args[2])
+                        print(f"Moved {args[1]} to {args[2]}")
                     except FileNotFoundError:
-                        print(f"Error: File atau direktori '{args[1]}' tidak ditemukan")
+                        print(f"'{args[1]}' not found")
                     except Exception as e:
-                        print(f"Error: {e}")
+                        print(f"Move failed: {e}")
 
-            elif cmd == "clear":
-                clear_screen()
+            elif cmd == "/clear":
+                os.system('cls' if os.name == 'nt' else 'clear')
+                show_ascii_art()
 
-            elif cmd == "search":
-                if len(args) < 2:
-                    print("Error: Pola pencarian tidak disebutkan")
-                else:
-                    search(args[1])
-
-            elif cmd == "tree":
+            elif cmd == "/map":
+                print("\nChunk Structure:")
                 tree(os.getcwd())
 
-            elif cmd == "find_large":
+            elif cmd == "/find":
                 if len(args) < 2:
-                    print("Error: Ukuran file tidak disebutkan")
+                    print("Error: What are you looking for?")
                 else:
+                    print(f"Searching for {args[1]}...")
+                    search(args[1])
+
+            elif cmd == "/large":
+                if len(args) < 2:
+                    print("Error: Specify size in MB")
+                else:
+                    print(f"Finding large structures...")
                     find_large(args[1])
 
-            elif cmd == "log":
-                if len(args) < 2:
-                    print("Error: Command untuk log tidak disebutkan")
-                else:
-                    log_command(" ".join(args[1:]))
-                    print("Command telah dicatat ke file log.")
+            elif cmd == "/achievement":
+                achievement()
 
-            elif cmd == "joke":
-                joke()
-
-            elif cmd == "help":
+            elif cmd == "/help":
                 show_help()
 
-            elif cmd == "exit":
-                print("Keluar dari CLI. Sampai jumpa!")
+            elif cmd == "/quit":
+                print("\nThanks for playing CLI-Craft! See you soon!")
+                time.sleep(1)
                 sys.exit()
 
             else:
-                print(f"Error: Perintah '{cmd}' tidak dikenal")
+                print(f"Unknown command: '{cmd}'. Type /help for help.")
 
         except KeyboardInterrupt:
-            print("\nGunakan 'exit' untuk keluar dari CLI.")
+            print("\nUse /quit to leave the game")
         except Exception as e:
             print(f"Error: {e}")
 
 if __name__ == "__main__":
-    clear_screen()
-    print("Selamat datang di Python CLI. Ketik 'help' untuk melihat daftar perintah.")
+    os.system('cls' if os.name == 'nt' else 'clear')
+    show_ascii_art()
+    print("Welcome to CLI-Craft! Type /help for available commands.")
     main()
